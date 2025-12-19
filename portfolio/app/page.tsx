@@ -21,7 +21,7 @@ import {
   X
 } from 'lucide-react'
 
-// Navigation Component
+// Navigation Component with CV Download
 function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -34,6 +34,11 @@ function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const handleDownloadCV = () => {
+    // Open CV in new tab
+    window.open('/cv.pdf', '_blank')
+  }
+
   const navLinks = [
     { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
@@ -44,7 +49,7 @@ function Navigation() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-dark-900/90 backdrop-blur-xl border-b border-white/5' : ''
+      isScrolled ? 'bg-dark-900/90 backdrop-blur-xl border-b border-white/5' : 'bg-dark-900/20'
     }`}>
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
@@ -64,6 +69,14 @@ function Navigation() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-primary transition-all group-hover:w-full" />
               </a>
             ))}
+            
+            {/* CV Download Button */}
+            <button
+              onClick={handleDownloadCV}
+              className="text-sm px-4 py-2 bg-accent-primary text-dark-900 font-semibold rounded-full hover:shadow-lg hover:shadow-accent-primary/25 transition-all hover:-translate-y-0.5"
+            >
+              Download CV
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -88,6 +101,16 @@ function Navigation() {
                 {link.label}
               </a>
             ))}
+            {/* Mobile CV Download Button */}
+            <button
+              onClick={() => {
+                handleDownloadCV()
+                setIsMobileMenuOpen(false)
+              }}
+              className="block w-full text-left px-6 py-3 text-accent-primary hover:bg-accent-primary/10 transition-colors"
+            >
+              Download CV
+            </button>
           </div>
         )}
       </div>
