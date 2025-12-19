@@ -254,7 +254,7 @@ function SkillsSection() {
       title: 'DevOps & Tools',
       icon: GitBranch,
       color: 'accent-primary',
-      skills: ['Git', 'GitHub', 'Docker', 'cPanel', 'CI/CD', 'VPS Deployment', 'Shell/Bash']
+      skills: ['Git', 'GitHub','GitHub Actions','Docker', 'cPanel', 'CI/CD', 'VPS Deployment', 'Shell/Bash']
     },
     {
       title: 'Integrations',
@@ -495,7 +495,7 @@ function EducationSection() {
   )
 }
 
-// Contact Section
+// Contact Section - Fixed with clickable buttons
 function ContactSection() {
   return (
     <section id="contact" className="py-32 bg-dark-800">
@@ -513,24 +513,32 @@ function ContactSection() {
             </p>
             
             <div className="space-y-4">
-              <a href="mailto:Abdulrehmankhan1010589@gmail.com" className="contact-link">
-                <Mail size={24} />
+              <a 
+                href="mailto:Abdulrehmankhan1010589@gmail.com"
+                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all hover:scale-[1.02] group"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Mail size={24} className="text-accent-primary" />
                 <div>
                   <div className="text-sm text-gray-500">Email</div>
                   <div className="text-white">Abdulrehmankhan1010589@gmail.com</div>
                 </div>
               </a>
               
-              <a href="tel:+923071010589" className="contact-link">
-                <Phone size={24} />
+              <a 
+                href="tel:+923071010589"
+                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all hover:scale-[1.02] group"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Phone size={24} className="text-accent-primary" />
                 <div>
                   <div className="text-sm text-gray-500">Phone</div>
                   <div className="text-white">+92 307 1010589</div>
                 </div>
               </a>
               
-              <div className="contact-link cursor-default">
-                <MapPin size={24} />
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                <MapPin size={24} className="text-accent-primary" />
                 <div>
                   <div className="text-sm text-gray-500">Location</div>
                   <div className="text-white">Lahore, Pakistan</div>
@@ -540,38 +548,67 @@ function ContactSection() {
           </div>
           
           <div className="flex flex-col justify-center">
-            <div className="gradient-border p-8 text-center">
+            <div className="border border-accent-primary/30 rounded-xl p-8 text-center bg-gradient-to-br from-dark-900 to-dark-800">
               <h3 className="font-display text-2xl font-semibold text-white mb-4">
                 Ready to collaborate?
               </h3>
               <p className="text-gray-400 mb-8">
                 Let's discuss your next project and bring your ideas to life.
               </p>
-              <a 
-                href="mailto:Abdulrehmankhan1010589@gmail.com"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-accent-primary text-dark-900 font-semibold rounded-full hover:shadow-lg hover:shadow-accent-primary/25 transition-all hover:-translate-y-1"
-              >
-                Send Message
-                <ExternalLink size={18} />
-              </a>
               
-              <div className="flex justify-center gap-4 mt-8">
+              {/* FIXED: Send Message Button - Make sure this is clickable */}
+              <div className="mb-8">
                 <a 
-                  href="https://github.com/" 
+                  href="mailto:Abdulrehmankhan1010589@gmail.com?subject=Portfolio%20Inquiry&body=Hello%20Abdulrehman,%0D%0A%0D%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect."
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent-primary text-dark-900 font-semibold rounded-full hover:shadow-lg hover:shadow-accent-primary/25 transition-all hover:-translate-y-1 active:scale-95 cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = "mailto:Abdulrehmankhan1010589@gmail.com?subject=Portfolio Inquiry&body=Hello Abdulrehman,\n\nI saw your portfolio and would like to connect.";
+                  }}
+                  style={{ display: 'inline-flex', cursor: 'pointer' }}
+                >
+                  <span>Send Message</span>
+                  <ExternalLink size={18} />
+                </a>
+              </div>
+              
+              <p className="text-sm text-gray-500 mb-6">Connect with me on</p>
+              
+              <div className="flex justify-center gap-6">
+                {/* GitHub Button - FIXED
+                <a 
+                  href="https://github.com/Abdulrehman4254" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-white/5 border border-white/10 hover:border-accent-primary hover:bg-accent-primary/10 transition-all"
+                  className="p-4 rounded-full bg-white/5 border border-white/10 hover:border-accent-primary hover:bg-accent-primary/10 transition-all hover:scale-110 active:scale-95 cursor-pointer group"
+                  onClick={(e) => e.stopPropagation()}
+                  style={{ cursor: 'pointer' }}
+                  title="View my GitHub profile"
                 >
-                  <Github size={20} />
-                </a>
+                  <Github size={22} className="text-white group-hover:text-accent-primary transition-colors" />
+                  <span className="sr-only">GitHub</span>
+                </a> */}
+                
+                {/* LinkedIn Button - FIXED */}
                 <a 
-                  href="https://linkedin.com/" 
+                  href="https://www.linkedin.com/in/abdulrehman-khan-/" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-white/5 border border-white/10 hover:border-accent-primary hover:bg-accent-primary/10 transition-all"
+                  className="p-4 rounded-full bg-white/5 border border-white/10 hover:border-accent-primary hover:bg-accent-primary/10 transition-all hover:scale-110 active:scale-95 cursor-pointer group"
+                  onClick={(e) => e.stopPropagation()}
+                  style={{ cursor: 'pointer' }}
+                  title="View my LinkedIn profile"
                 >
-                  <Linkedin size={20} />
+                  <Linkedin size={22} className="text-white group-hover:text-accent-primary transition-colors" />
+                  <span className="sr-only">LinkedIn</span>
                 </a>
+              </div>
+              
+              <div className="mt-8 pt-6 border-t border-white/10">
+                <p className="text-sm text-gray-400">
+                  <span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse mr-2"></span>
+                  Available for opportunities
+                </p>
               </div>
             </div>
           </div>
